@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Flask App</h1>
+{% if current_user.is_authenticated %}
+    <p>Hello, {{ current_user.password }}! <a href="{{ url_for('auth.protected') }}">Go to protected page</a></p>
+{% else %}
+    <p>Please <a href="{{ url_for('auth.login') }}">login</a> or <a href="{{ url_for('auth.signup') }}">sign up</a>.</p>
+{% endif %}
+{% endblock %}
